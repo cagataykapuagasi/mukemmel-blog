@@ -12,11 +12,8 @@ const BlogPost = ({ post }) => (
     </Head>
 
     <div className="hero">
-      <h1 className="hero-title">Selman Kahya</h1>
+      <h1 className="hero-title">Çağatay Kapuağası</h1>
       <div className="hero-social-links">
-        <Link href="https://medium.com/@selmankahya">
-          <a className="social-link">Medium</a>
-        </Link>
         <Link href="https://www.twitter.com/selmankahyax">
           <a className="social-link">Twitter</a>
         </Link>

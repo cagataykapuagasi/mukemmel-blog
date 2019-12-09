@@ -3,66 +3,63 @@ import fetch from "isomorphic-unfetch";
 import Head from "next/head";
 import Link from "next/link";
 import Post from "../src/components/Post";
+import InfiniteScroll from "react-infinite-scroll-component";
+import "../src/styles/home.scss";
+import Icon from "../src/components/Icon";
 
 const Home = ({ posts }) => (
   <div className="container">
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
+    <div className="posts">
+      <Head>
+        <title>Home</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-    <div className="hero">
-      <h1 className="hero-title">Selman Kahya</h1>
-      <div className="hero-social-links">
-        <Link href="https://www.twitter.com/Jus_tect">
-          <a className="social-link">Twitter</a>
-        </Link>
-        <Link href="https://www.linkedin.com/in/cagataykapuagasi/">
-          <a className="social-link">LinkedIn</a>
-        </Link>
+      <p className="name">Çağatay Kapuağası</p>
+      <p className="job">Computer Science</p>
+
+      <div className="icons">
+        <Icon size={70} type="twitter" />
+        <Icon size={70} type="instagram" />
+        <Icon size={70} type="linkedin" />
+        <Icon size={70} type="facebook" />
+      </div>
+
+      {/* <InfiniteScroll
+      //dataLength={items.length} //This is important field to render the next data
+      next={fetchData}
+      hasMore={true}
+      loader={<h4>Loading...</h4>}
+      endMessage={
+        <p style={{ textAlign: "center" }}>
+          <b>Yay! You have seen it all</b>
+        </p>
+      }
+      // below props only if you need pull down functionality
+      refreshFunction={this.refresh}
+      pullDownToRefresh
+      pullDownToRefreshContent={
+        <h3 style={{ textAlign: "center" }}>&#8595; Pull down to refresh</h3>
+      }
+      releaseToRefreshContent={
+        <h3 style={{ textAlign: "center" }}>&#8593; Release to refresh</h3>
+      }
+    >
+      {items}
+    </InfiniteScroll> */}
+
+      <div className="postContainer">
+        {posts.map(post => (
+          <Post post={post} />
+        ))}
       </div>
     </div>
-
-    {posts.map(post => (
-      <Post post={post} />
-    ))}
-
-    <style jsx>{`
-      .container {
-        max-width: 650px;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .hero {
-        text-align: center;
-        margin: 96px 0;
-      }
-
-      .social-link {
-        margin-right: 8px;
-      }
-
-      .hero-title {
-        font-size: 48px;
-      }
-
-      .blog-date {
-        text-align: right;
-        color: #cccccc;
-        margin: 12px 0 48px 0;
-      }
-
-      a {
-        color: #35459e;
-        text-decoration: none;
-      }
-    `}</style>
   </div>
 );
 
+//https://odullu-yarisma.herokuapp.com/api/posts
 Home.getInitialProps = async ({ req }) => {
-  const res = await fetch("https://odullu-yarisma.herokuapp.com/api/posts");
+  const res = await fetch("http://localhost:3000/api/posts");
   const json = await res.json();
   return { posts: json.posts };
 };

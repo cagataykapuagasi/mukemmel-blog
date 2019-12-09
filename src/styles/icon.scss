@@ -1,0 +1,53 @@
+.icon-twitter {
+  @extend .border;
+  &:hover {
+    color: skyblue;
+  }
+  &:active {
+    color: #b25500;
+  }
+}
+
+.icon-instagram {
+  @extend .border;
+
+  &:hover {
+    color: #bc2a8d;
+  }
+  &:active {
+    color: #b25500;
+  }
+}
+
+.icon-linkedin {
+  @extend .border;
+
+  color: #c1c1c1;
+  &:hover {
+    color: #0077b5;
+  }
+  &:active {
+    color: #b25500;
+  }
+}
+
+.icon-facebook {
+  @extend .border;
+
+  color: #c1c1c1;
+  &:hover {
+    color: #3b5998;
+  }
+  &:active {
+    color: #b25500;
+  }
+}
+
+.border {
+  margin-right: 30px;
+  color: #c1c1c1;
+  border-style: outset;
+  border-width: medium;
+  padding: 20px;
+  cursor: pointer;
+}
